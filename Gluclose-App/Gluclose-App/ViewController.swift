@@ -8,11 +8,14 @@
 
 import UIKit
 import Spring
+import Alamofire
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var circle: SpringButton!
     @IBOutlet weak var feedbackText: UILabel!
+    
+    var serverURL: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,28 @@ class ViewController: UIViewController {
     
     @IBAction func circlePressed(_ sender: Any) {
         print("esketit")
+    }
+    
+    func repeatRequest() {
+        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.getRequest), userInfo: nil, repeats: true)
+    }
+    
+    @objc func getRequest() {
+        Alamofire.request(serverURL)
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    for node in JSON as! [String: AnyObject] {
+                        print(node)
+                    }
+                }
+//                switch response.result {
+//                    case .Success:
+//                        print("Validation Successful")
+//                    case .Failure(let error):
+//                        self.outputText.text = String(error)
+//                        print(error)
+//                }
+        }
     }
     
     func display(option: Int) {

@@ -3,5 +3,6 @@
 target 'Gluclose-App' do
 	use_frameworks!
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
+	pod 'Alamofire', '~> 4.7'
 
 end
