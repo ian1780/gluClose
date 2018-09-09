@@ -1,8 +1,12 @@
+
 # platform :ios, '9.0'
 
 target 'Gluclose-App' do
 	use_frameworks!
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 	pod 'Alamofire', '~> 4.7'
+	pod 'Firebase'
+	pod 'Firebase/Core'
+pod 'Firebase/Database'
 
 end
