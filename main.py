@@ -1,5 +1,4 @@
 import serial
-import threading
 from bottle import route, run, template
 import json
 from firebase import firebase
